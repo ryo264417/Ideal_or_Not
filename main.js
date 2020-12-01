@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const model = await modelPromise
 
     const prediction = tf.tidy(() => {
-      let input = tf.fromPixels(ctx.getImageData(0, 0, 150, 150))
-      input = tf.cast(input, 'float32').div(tf.scalar(255))
-      input = input.expandDims()
-      return model.predict(input).dataSync()[0]
+      let input = tf.fromPixels(ctx.getImageData(0, 0, 150, 150)).resizeNearestNeighbor([100,100]);
+      input = tf.cast(input, 'float32').div(tf.scalar(255));
+      input = input.expandDims();
+      return model.predict(input).dataSync()[0];
     })
 
     if (prediction < 0.5) {
@@ -35,3 +35,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   })
 })
+
