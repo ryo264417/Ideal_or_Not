@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       return model.predict(input).dataSync()[0];
     })
 
-    if (prediction < 0.5) {
-      output.innerHTML = `Ideal ${100 - prediction * 100}%`
+    if (prediction > 0.5) {
+      output.innerHTML = `Ideal ${prediction * 100}%`
     } else {
-      output.innerHTML = `Not ${prediction * 100}%`
+      output.innerHTML = `Not ${100 - prediction * 100}%`
     }
   })
 })
