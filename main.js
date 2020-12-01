@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     if (prediction < 0.5) {
-      output.innerHTML = `猫 ${100 - prediction * 100}%`
+      output.innerHTML = `Ideal ${100 - prediction * 100}%`
     } else {
-      output.innerHTML = `犬 ${prediction * 100}%`
+      output.innerHTML = `Not ${prediction * 100}%`
     }
   })
 })
